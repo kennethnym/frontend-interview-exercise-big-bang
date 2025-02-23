@@ -1,17 +1,27 @@
-import automataLogo from '../assets/automata.png'
-import './App.css'
+import { useGameStore } from "./game-store.ts"
+import { PAGE, PAGE_MAP } from "./pages/page.ts"
+import LoadingPage from "./pages/loading-page.tsx"
+import { Suspense, useEffect } from "react"
+import "./App.css"
 
 function App() {
+  const page = useGameStore((state) => state.page)
+  const initializeGame = useGameStore((state) => state.initializeGame)
+
+  useEffect(() => {
+    console.log("use effect")
+    initializeGame()
+  }, [initializeGame])
+
+  if (page === PAGE.loading) {
+    return <LoadingPage />
+  }
+
+  const PageComponent = PAGE_MAP[page]
   return (
-    <>
-      <div>
-        <a href="https://automata.tech/" target="_blank">
-          <img src={String(automataLogo)} className="logo automata" alt="Automata logo"/>
-        </a>
-      </div>
-      <h1>Frontend Exercise</h1>
-      <h2>Rock, Paper, Scissors, Lizard, Spock</h2>
-    </>
+    <Suspense fallback={<LoadingPage />}>
+      <PageComponent />
+    </Suspense>
   )
 }
 
