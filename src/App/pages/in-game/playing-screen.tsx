@@ -31,11 +31,9 @@ function PlayingScreen() {
         <PlayerLabel label="Computer" onDisplayed={onPlayerLabelDisplayed} />
         <ComputerChoiceLabel />
         <ComputerDeck />
-        <ComputerScore />
       </PlayerSectionBackground>
       <PlayerSectionBackground direction="fromBottom">
         <PlayerLabel label="You" onDisplayed={onPlayerLabelDisplayed} />
-        <PlayerScore />
         <PlayerDeck />
         <PlayerChoiceLabel />
       </PlayerSectionBackground>
@@ -234,20 +232,6 @@ function PlayerDeck() {
   )
   const setChoice = useGameStore((state) => state.setPlayerChoice)
   return <CardDeck interactable selectedChoice={choice} onSelect={setChoice} />
-}
-
-function ComputerScore() {
-  const score = useGameStore((state) => state.computerScore)
-  return <p className="font-bold text-2xl md:text-4xl">{score}</p>
-}
-
-function PlayerScore() {
-  const isVisible = useGameStore((state) =>
-    state.gameRound ? state.gameRound.state !== ROUND_STATE.greeting : false,
-  )
-  const score = useGameStore((state) => state.playerScore)
-  if (!isVisible) return null
-  return <p className="font-bold text-2xl md:text-4xl">{score}</p>
 }
 
 function ComputerChoiceLabel() {
