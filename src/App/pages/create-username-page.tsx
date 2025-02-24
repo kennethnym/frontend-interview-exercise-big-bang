@@ -34,8 +34,8 @@ function CreateUsernamePage() {
 
   return (
     <div className="w-full min-h-[inherit] flex flex-col items-center justify-center">
-      <h1 className="text-4xl font-bold dark:text-white">Welcome!</h1>
-      <h2 className="text-2xl opacity-80 darK:text-white">
+      <h1 className="text-4xl font-bold">Welcome!</h1>
+      <h2 className="text-2xl opacity-80">
         Before the game starts, pick a username:
       </h2>
       <form onSubmit={createUsername} className="flex flex-col items-center">
@@ -51,7 +51,7 @@ function CreateUsernamePage() {
             // which is separate from our custom validation
             event.currentTarget.setCustomValidity(EMPTY_USERNAME_MESSAGE)
           }}
-          className="bg-transparent text-xl text-center my-8"
+          className="bg-neutral-300 dark:bg-neutral-700 dark:border dark:border-neutral-600 py-2 text-xl text-center my-8 inset-shadow-sm rounded"
         />
         <Button type="submit">Continue</Button>
       </form>

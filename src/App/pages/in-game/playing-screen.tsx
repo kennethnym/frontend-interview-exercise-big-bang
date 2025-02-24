@@ -26,7 +26,7 @@ function PlayingScreen() {
   }, [setRoundState])
 
   return (
-    <main className="w-full min-h-[inherit] flex flex-col">
+    <main className="w-full min-h-[inherit] flex flex-col text-neutral-200">
       <PlayerSectionBackground direction="fromTop">
         <PlayerLabel label="Computer" onDisplayed={onPlayerLabelDisplayed} />
         <ComputerChoiceLabel />
@@ -52,7 +52,7 @@ function PlayerSectionBackground({
   )
   return (
     <motion.div
-      className={`flex flex-col items-center justify-evenly flex-1 ${direction === "fromTop" ? "bg-red-900" : "bg-blue-900"}`}
+      className={`flex flex-1 flex-col items-center justify-evenly ${direction === "fromTop" ? "bg-red-900" : "bg-blue-900"}`}
       initial={shouldAnimate ? "hidden" : "visible"}
       animate="visible"
       variants={{
