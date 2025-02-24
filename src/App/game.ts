@@ -78,7 +78,6 @@ function generateChoice(): Choice {
  * @param b
  */
 function compareChoices(a: Choice, b: Choice): Outcome {
-  console.log({ a, b })
   if (a === b) return OUTCOME.tied
   const aWinsAgainst = OUTCOME_TABLE[a]
   if (aWinsAgainst.includes(b)) {

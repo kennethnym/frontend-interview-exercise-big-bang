@@ -9,7 +9,6 @@ function App() {
   const initializeGame = useGameStore((state) => state.initializeGame)
 
   useEffect(() => {
-    console.log("use effect")
     initializeGame()
   }, [initializeGame])
 
