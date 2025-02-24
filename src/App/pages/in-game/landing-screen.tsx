@@ -21,7 +21,7 @@ function LandingScreen() {
       {isVisible ? (
         <motion.div exit={{ scale: 0 }}>
           <main className="flex flex-col items-center">
-            <h1 className="font-bold">Ross</h1>
+            <h1 className="font-bold text-4xl">Ross</h1>
             <h2 className="opacity-80">
               Rock paper scissors with a <em>twist!</em>
             </h2>
