@@ -1,18 +1,18 @@
 import { useGameStore } from "../../game-store.ts"
-import { GAME_STAGE } from "../../game.ts"
+import { GAME_SCREEN } from "../../game.ts"
 import LandingScreen from "./landing-screen.tsx"
-import GameScreen from "./game-screen.tsx"
+import PlayingScreen from "./playing-screen.tsx"
 
-const STAGE_COMPONENT = {
-  [GAME_STAGE.landing]: LandingScreen,
-  [GAME_STAGE.playing]: GameScreen,
+const SCREEN_COMPONENT = {
+  [GAME_SCREEN.landing]: LandingScreen,
+  [GAME_SCREEN.playing]: PlayingScreen,
 } as const
 
 function InGamePage() {
   return (
     <div className="w-full min-h-[inherit] flex flex-col items-center justify-center">
       <TopNav />
-      <CurrentStage />
+      <CurrentScreen />
     </div>
   )
 }
@@ -26,10 +26,10 @@ function TopNav() {
   )
 }
 
-function CurrentStage() {
-  const stage = useGameStore((state) => state.gameStage)
-  const StageComponent = STAGE_COMPONENT[stage]
-  return <StageComponent />
+function CurrentScreen() {
+  const screen = useGameStore((state) => state.gameScreen)
+  const ScreenComponent = SCREEN_COMPONENT[screen]
+  return <ScreenComponent />
 }
 
 export default InGamePage

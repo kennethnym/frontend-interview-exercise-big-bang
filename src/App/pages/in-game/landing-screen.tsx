@@ -1,16 +1,20 @@
 import { AnimatePresence, motion } from "motion/react"
 import { useGameStore } from "../../game-store.ts"
-import { GAME_STAGE } from "../../game.ts"
+import { GAME_SCREEN } from "../../game.ts"
 import { useState } from "react"
 
 function LandingScreen() {
   const [isVisible, setIsVisible] = useState(true)
-  const setCurrentGameStage = useGameStore((state) => state.setCurrentGameStage)
+  const setCurrentGameScreen = useGameStore(
+    (state) => state.setCurrentGameScreen,
+  )
+  const advanceToNextRound = useGameStore((state) => state.advanceToNextRound)
 
   return (
     <AnimatePresence
       onExitComplete={() => {
-        setCurrentGameStage(GAME_STAGE.playing)
+        setCurrentGameScreen(GAME_SCREEN.playing)
+        advanceToNextRound()
       }}
     >
       {isVisible ? (
