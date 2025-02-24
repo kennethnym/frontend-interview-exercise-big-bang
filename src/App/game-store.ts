@@ -22,6 +22,7 @@ interface GameState {
   username: Username | null
   gameScreen: GameScreen
   gameRound: GameRound | null
+  isInGameMenuOpen: boolean
   computerScore: number
   playerScore: number
 
@@ -31,6 +32,8 @@ interface GameState {
   advanceToNextRound: () => void
   setCurrentRoundState: (state: RoundState) => void
   setPlayerChoice: (choice: Choice) => Outcome
+  setIsInGameMenuOpen: (open: boolean) => void
+  resetGame: () => void
 }
 
 const useGameStore = create<GameState>()(
@@ -39,6 +42,7 @@ const useGameStore = create<GameState>()(
       page: PAGE.loading,
       username: null,
       gameScreen: GAME_SCREEN.landing,
+      isInGameMenuOpen: false,
       gameRound: null,
       playerScore: 0,
       computerScore: 0,
@@ -133,6 +137,19 @@ const useGameStore = create<GameState>()(
         }))
 
         return outcome
+      },
+
+      setIsInGameMenuOpen(open: boolean) {
+        set({ isInGameMenuOpen: open })
+      },
+
+      resetGame() {
+        set({
+          computerScore: 0,
+          playerScore: 0,
+          gameRound: null,
+          gameScreen: GAME_SCREEN.landing,
+        })
       },
     }),
     {
