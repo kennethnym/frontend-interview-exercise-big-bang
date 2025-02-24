@@ -235,24 +235,38 @@ function PlayerDeck() {
 }
 
 function ComputerChoiceLabel() {
-  const isVisible = useGameStore((state) =>
+  const isHidden = useGameStore((state) =>
+    state.gameRound ? state.gameRound.state === ROUND_STATE.greeting : false,
+  )
+  const isInvisible = useGameStore((state) =>
     state.gameRound ? state.gameRound.state === ROUND_STATE.revealed : false,
   )
   const selectedChoice = useGameStore((state) =>
     state.gameRound ? state.gameRound.computerChoice : "",
   )
+
+  if (isHidden) return null
+
   return (
     <p>
-      {isVisible && selectedChoice ? `Computer selected ${selectedChoice}` : ""}
+      {isInvisible && selectedChoice
+        ? `Computer selected ${selectedChoice}`
+        : ""}
     </p>
   )
 }
 
 function PlayerChoiceLabel() {
+  const isHidden = useGameStore((state) =>
+    state.gameRound ? state.gameRound.state === ROUND_STATE.greeting : false,
+  )
   const username = useGameStore((state) => state.username || "")
   const selectedChoice = useGameStore((state) =>
     state.gameRound ? state.gameRound.playerChoice || "" : "",
   )
+
+  if (isHidden) return null
+
   return <p>{selectedChoice ? `${username} selected ${selectedChoice}` : ""}</p>
 }
 
