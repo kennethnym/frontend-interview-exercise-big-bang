@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "motion/react"
 import { useGameStore } from "../../game-store.ts"
 import { GAME_SCREEN } from "../../game.ts"
 import { useState } from "react"
+import { Button } from "../../components/button.tsx"
 
 function LandingScreen() {
   const [isVisible, setIsVisible] = useState(true)
@@ -24,7 +25,7 @@ function LandingScreen() {
             <h2 className="opacity-80">
               Rock paper scissors with a <em>twist!</em>
             </h2>
-            <button
+            <Button
               type="button"
               className="mt-4"
               onClick={() => {
@@ -32,7 +33,7 @@ function LandingScreen() {
               }}
             >
               Start game!
-            </button>
+            </Button>
           </main>
         </motion.div>
       ) : null}

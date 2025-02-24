@@ -20,7 +20,7 @@ function InGamePage() {
 function TopNav() {
   const username = useGameStore((state) => state.username)
   return (
-    <nav className="fixed top-0 left-0 right-0 flex flex-row justify-end px-8 py-4">
+    <nav className="fixed top-0 left-0 right-0 flex flex-row justify-start px-8 py-4">
       <p>{username}</p>
     </nav>
   )

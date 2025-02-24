@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent, useRef } from "react"
 import { validateUsername } from "../game.ts"
 import { useGameStore } from "../game-store.ts"
+import { Button } from "../components/button.tsx"
 
 const EMPTY_USERNAME_MESSAGE = "Username cannot be empty!"
 
@@ -52,7 +53,7 @@ function CreateUsernamePage() {
           }}
           className="bg-transparent text-xl text-center my-8"
         />
-        <button type="submit">Continue</button>
+        <Button type="submit">Continue</Button>
       </form>
     </div>
   )
