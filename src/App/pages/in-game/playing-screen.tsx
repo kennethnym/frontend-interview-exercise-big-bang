@@ -11,6 +11,8 @@ import { OUTCOME, ROUND_STATE } from "../../game.ts"
 import { CardDeck } from "./card-deck.tsx"
 
 function PlayingScreen() {
+  // because the player label displayed callback can be called multiple times
+  // this flag is used to ensure that the side effect is only triggered once
   const labelDisplayed = useRef(false)
   const setRoundState = useGameStore((state) => state.setCurrentRoundState)
 
@@ -68,6 +70,9 @@ function PlayerSectionBackground({
   )
 }
 
+/**
+ * Shows the label of a player for 3 seconds, then hide it, and call onDisplayed once hidden.
+ */
 function PlayerLabel({
   label,
   onDisplayed,
@@ -112,6 +117,9 @@ function PlayerLabel({
   )
 }
 
+/**
+ * Countdown rock paper scissors shoot, then call onFinish when the countdown is over.
+ */
 function CountdownLabel({ onFinish }: { onFinish: () => void }) {
   const shouldBeVisible = useGameStore((state) =>
     state.gameRound ? state.gameRound.state === ROUND_STATE.starting : false,
@@ -122,6 +130,9 @@ function CountdownLabel({ onFinish }: { onFinish: () => void }) {
 
   useEffect(() => {
     if (shouldBeVisible) {
+      // Show current round number, wait 2 seconds, then count down
+      // 500ms delay between words
+
       setIsVisible(true)
       setLabel(`Round ${roundNumber.toString()}`)
 

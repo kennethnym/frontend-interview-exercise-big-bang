@@ -3,7 +3,7 @@ import { useGameStore } from "../../game-store.ts"
 import clsx from "clsx"
 import { motion, Variants } from "motion/react"
 
-const CHOICE_LABEL = {
+const CHOICE_ICON = {
   [CHOICE.rock]: "🪨",
   [CHOICE.paper]: "📄",
   [CHOICE.scissors]: "✂️",
@@ -83,7 +83,7 @@ function StaticItem({
       animate={showSelection ? (selected ? "selected" : "notSelected") : "idle"}
       className="w-24 h-20 md:h-32 rounded bg-neutral-200 text-neutral-900 shadow-sm text-2xl flex flex-col items-center justify-center"
     >
-      <span className="text-2xl">{CHOICE_LABEL[choice]}</span>
+      <span className="text-2xl">{CHOICE_ICON[choice]}</span>
       <br />
       <span className="text-lg">{choice}</span>
     </motion.li>
@@ -114,7 +114,7 @@ function ClickableItem({
         )}
         onClick={onClick}
       >
-        <span className="text-2xl">{CHOICE_LABEL[choice]}</span>
+        <span className="text-2xl">{CHOICE_ICON[choice]}</span>
         <br />
         <span className="text-lg">{choice}</span>
       </button>

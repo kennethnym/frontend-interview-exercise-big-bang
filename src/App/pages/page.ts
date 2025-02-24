@@ -1,5 +1,8 @@
 import { lazy } from "react"
 
+/**
+ * PAGE defines all top level pages.
+ */
 const PAGE = {
   loading: "loading",
   createUsername: "createUsername",
