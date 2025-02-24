@@ -28,6 +28,10 @@ function CurrentScreen() {
 }
 
 function TopNav() {
+  const isVisible = useGameStore(
+    (state) => state.gameScreen === GAME_SCREEN.playing,
+  )
+  if (!isVisible) return null
   return (
     <nav className="fixed z-20 top-0 left-0 right-0 flex flex-row justify-start px-8 py-4">
       <MenuButton />
