@@ -127,17 +127,17 @@ function CountdownLabel({ onFinish }: { onFinish: () => void }) {
 
       const t1 = setTimeout(() => {
         setLabel("Rock")
-      }, 3000)
+      }, 2000)
       const t2 = setTimeout(() => {
         setLabel("Paper")
-      }, 4000)
+      }, 2500)
       const t3 = setTimeout(() => {
         setLabel("Scissors")
-      }, 5000)
+      }, 3000)
       const t4 = setTimeout(() => {
         setLabel("Shoot!")
         onFinish()
-      }, 6000)
+      }, 3500)
 
       return () => {
         clearTimeout(t1)
